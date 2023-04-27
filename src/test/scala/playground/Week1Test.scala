@@ -8,6 +8,7 @@ class Week1Test extends AnyFlatSpec {
     val breakingRecords = "breakingRecords"
     val camelCase4 = "camelCase4"
     val divisibleSumPairs = "divisibleSumPairs"
+    val matchingStrings = "matchingStrings"
 
     plusMinus should "return 0.500000 0.333333 0.166667 when given [-4, 3, -9, 0, 4, 1]" in {
         val actual = Week1.plusMinus(Array(-4,3,-9,0,4,1))
@@ -121,6 +122,27 @@ class Week1Test extends AnyFlatSpec {
     it should s"return ${dsp2._1} when given k=${dsp2._3} and arr=${dsp2._2.mkString("[",",","]")}" in {
         val actual = Week1.divisibleSumPairs(dsp2._2.length, dsp2._3, dsp2._2)
         val expected = dsp2._1
+        assert(actual === expected)
+    }
+
+    val ms1 = (Array(2,1,0), Array("aba","baba","aba","xzxb"),Array("aba","xzxb","ab"))
+    val ms2 = (Array(1,0,1), Array("def","de","fgh"),Array("de","lmn","fgh"))
+    val ms3 = (Array(1,3,4,3,2), Array("abcde", "sdaklfj", "asdjf", "na", "basdn", "sdaklfj", "asdjf", "na", "asdjf", "na", "basdn", "sdaklfj", "asdjf"),Array("abcde", "sdaklfj", "asdjf", "na", "basdn"))
+    matchingStrings should s"return ${ms1._1.mkString("[",",","]")} when given array: ${ms1._2.mkString("[",",","]")} with queries: ${ms1._3.mkString("[",",","]")}" in {
+        val actual = Week1.matchingStrings(ms1._2, ms1._3)
+        val expected = ms1._1
+        assert(actual === expected)
+    }
+
+    it should s"return ${ms2._1.mkString("[",",","]")} when given array: ${ms2._2.mkString("[",",","]")} with queries: ${ms2._3.mkString("[",",","]")}" in {
+        val actual = Week1.matchingStrings(ms2._2, ms2._3)
+        val expected = ms2._1
+        assert(actual === expected)
+    }
+
+    it should s"return ${ms3._1.mkString("[",",","]")} when given array: ${ms3._2.mkString("[",",","]")} with queries: ${ms3._3.mkString("[",",","]")}" in {
+        val actual = Week1.matchingStrings(ms3._2, ms3._3)
+        val expected = ms3._1
         assert(actual === expected)
     }
 

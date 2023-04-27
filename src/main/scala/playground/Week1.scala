@@ -122,6 +122,10 @@ object Week1 {
         recSumP(ar.toList, 0)
     }
 
+    def matchingStrings(strings: Array[String], queries: Array[String]): Array[Int] = {
+        queries.map(q => strings.count(_.equals(q)))
+    }
+
     /* ----- Playground ----- */
     def main(args: Array[String]): Unit = {
 
