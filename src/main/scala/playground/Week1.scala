@@ -126,8 +126,14 @@ object Week1 {
         queries.map(q => strings.count(_.equals(q)))
     }
 
-    /* ----- Playground ----- */
-    def main(args: Array[String]): Unit = {
-
+    def findMedian(arr: Array[Int]): Int = {
+        val sorted = arr.sorted
+        val length = sorted.length
+        if(length%2==0){
+            (sorted(length/2) + sorted(length/2+1))/2
+        } else {
+            sorted(length/2)
+        }
     }
+
 }

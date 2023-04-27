@@ -9,6 +9,7 @@ class Week1Test extends AnyFlatSpec {
     val camelCase4 = "camelCase4"
     val divisibleSumPairs = "divisibleSumPairs"
     val matchingStrings = "matchingStrings"
+    val findMedian = "findMedian"
 
     plusMinus should "return 0.500000 0.333333 0.166667 when given [-4, 3, -9, 0, 4, 1]" in {
         val actual = Week1.plusMinus(Array(-4,3,-9,0,4,1))
@@ -143,6 +144,12 @@ class Week1Test extends AnyFlatSpec {
     it should s"return ${ms3._1.mkString("[",",","]")} when given array: ${ms3._2.mkString("[",",","]")} with queries: ${ms3._3.mkString("[",",","]")}" in {
         val actual = Week1.matchingStrings(ms3._2, ms3._3)
         val expected = ms3._1
+        assert(actual === expected)
+    }
+
+    findMedian should "return 3 when given [0,1,2,4,6,5,3]" in {
+        val actual = Week1.findMedian(Array(0,1,2,4,6,5,3))
+        val expected = 3
         assert(actual === expected)
     }
 
