@@ -21,8 +21,22 @@ object Week2 {
         }
     }
 
+    def flippingBits(n: Long): Long = {
+        (math.pow(2, 32).toLong - 1) - n
+    }
 
+    def diagonalDifference(arr: Array[Array[Int]]): Int = {
+        val arrLen = arr.length
 
+        def diagonal(posX: Int, posY:Int, res: Int, stepRight: Int) : Int = {
+            if(posX > arrLen-1 || posX < 0) res
+            else diagonal(posX + stepRight, posY+1, res+arr(posX)(posY), stepRight)
+        }
 
+        val l = diagonal(0,0,0,1)
+        val r = diagonal(arrLen-1, 0, 0, -1)
+
+        Math.abs(l-r)
+    }
 
 }
