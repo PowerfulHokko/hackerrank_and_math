@@ -7,6 +7,8 @@ class Week2Test extends AnyFlatSpec{
     val gradingStudents = "gradingStudents"
     val flippingBits = "flippingBits"
     val diagonalDifference = "diagonalDifference"
+    val countingSort = "countingSort"
+    val countingValleys = "countingValleys"
 
     val lonelyintegertest1: (Int, Array[Int]) = (1, Array(5,9,9,5,7,8,8,7,1,3,9,3,7))
     val lonelyintegertest2: (Int, Array[Int]) = (9, Array(5,0,9,5,7,8,8,0,0,3,7,3,7))
@@ -68,6 +70,34 @@ class Week2Test extends AnyFlatSpec{
     diagonalDifference should s"return ${diagonalDifference1._1} when given ${diagonalDifference1._2.map(x => x.mkString(",")).mkString(" \\ ")}" in {
         val expected = diagonalDifference1._1
         val actual = Week2.diagonalDifference(diagonalDifference1._2)
+        assert(actual === expected)
+    }
+
+    val cs = (Array(0,2,0,2,0,0,1,0,1,2,1,0,1,1,0,0,2,0,1,0,1,2,1,1,1,3,0,2,0,0,2,0,3,3,1,0,0,0,0,2,2,1,1,1,2,0,2,0,1,0,1,0,0,1,0,0,2,1,0,1,1,1,0,1,0,1,0,2,1,3,2,0,0,2,1,2,1,0,2,2,1,2,1,2,1,1,2,2,0,3,2,1,1,0,1,1,1,0,2,2), Array(63,25,73,1,98,73,56,84,86,57,16,83,8,25,81,56,9,53,98,67,99,12,83,89,80,91,39,86,76,85,74,39,25,90,59,10,94,32,44,3,89,30,27,79,46,96,27,32,18,21,92,69,81,40,40,34,68,78,24,87,42,69,23,41,78,22,6,90,99,89,50,30,20,1,43,3,70,95,33,46,44,9,69,48,33,60,65,16,82,67,61,32,21,79,75,75,13,87,70,33))
+    val cs2 = (Array(2,0,1,0,0,1,1,1,1,0,0,1,3,2,2,0,4,4,1,1,0,0,0,0,3,0,0,1,0,1,2,0,1,2,2,3,0,2,0,0,1,0,1,1,0,0,1,1,0,2,0,0,1,1,1,0,1,0,1,1,2,3,0,1,2,0,1,2,1,1,4,1,0,1,1,3,0,0,2,1,2,3,2,2,2,0,0,1,0,0,0,0,0,0,2,0,1,3,1,0), Array(63,54,17,78,43,70,32,97,16,94,74,18,60,61,35,83,13,56,75,52,70,12,24,37,17,0,16,64,34,81,82,24,69,2,30,61,83,37,97,16,70,53,0,61,12,17,97,67,33,30,49,70,11,40,67,94,84,60,35,58,19,81,16,14,68,46,42,81,75,87,13,84,33,34,14,96,7,59,17,98,79,47,71,75,8,27,73,66,64,12,29,35,80,78,80,6,5,24,49,82))
+    countingSort should s"return ${cs._1.mkString("[",",","]")} when given ${cs._2.mkString("[",",","]")}" in {
+        val expected = cs._1
+        val actual = Week2.countingSort(cs._2)
+        assert(actual === expected)
+    }
+
+    it should s"return ${cs2._1.mkString("[", ",", "]")} when given ${cs2._2.mkString("[", ",", "]")}" in {
+        val expected = cs2._1
+        val actual = Week2.countingSort(cs2._2)
+        assert(actual === expected)
+    }
+
+    val countingValleysTest = (1, (8,"UDDDUDUU"))
+    val countingValleysTest2 = (2, (12,"DDUUDDUDUUUD"))
+    countingValleys should s"return ${countingValleysTest._1} when given ${countingValleysTest._2}" in {
+        val expected = countingValleysTest._1
+        val actual = Week2.countingValleys(countingValleysTest._2._1, countingValleysTest._2._2)
+        assert(actual === expected)
+    }
+
+    it should s"return ${countingValleysTest2._1} when given ${countingValleysTest2._2}" in {
+        val expected = countingValleysTest2._1
+        val actual = Week2.countingValleys(countingValleysTest2._2._1, countingValleysTest2._2._2)
         assert(actual === expected)
     }
 

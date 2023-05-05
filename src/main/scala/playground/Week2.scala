@@ -39,4 +39,33 @@ object Week2 {
         Math.abs(l-r)
     }
 
+    def countingSort(arr: Array[Int]): Array[Int] = {
+        val mutArr = scala.collection.mutable.ArrayBuffer.fill(100)(0)
+        arr.foreach(x => mutArr.update(x, mutArr(x)+1))
+        mutArr.toArray
+    }
+
+    def countingValleys(steps: Int, path: String): Int = {
+        var currentLevel = 0
+        var ctValley = 0
+        var isInValley = false
+
+        for (step <- path) {
+            if (step == 'U') {
+                currentLevel += 1
+                if (currentLevel == 0 && isInValley) {
+                    isInValley = false
+                    ctValley += 1
+                }
+            } else { // step == 'D'
+                currentLevel -= 1
+                if (currentLevel < 0 && !isInValley) {
+                    isInValley = true
+                }
+            }
+        }
+
+        ctValley
+    }
+
 }
