@@ -9,6 +9,8 @@ class Week2Test extends AnyFlatSpec{
     val diagonalDifference = "diagonalDifference"
     val countingSort = "countingSort"
     val countingValleys = "countingValleys"
+    val pangrams = "pangrams"
+    val marsExploration = "marsExploration"
 
     val lonelyintegertest1: (Int, Array[Int]) = (1, Array(5,9,9,5,7,8,8,7,1,3,9,3,7))
     val lonelyintegertest2: (Int, Array[Int]) = (9, Array(5,0,9,5,7,8,8,0,0,3,7,3,7))
@@ -98,6 +100,42 @@ class Week2Test extends AnyFlatSpec{
     it should s"return ${countingValleysTest2._1} when given ${countingValleysTest2._2}" in {
         val expected = countingValleysTest2._1
         val actual = Week2.countingValleys(countingValleysTest2._2._1, countingValleysTest2._2._2)
+        assert(actual === expected)
+    }
+
+    val papangramsTest1 = ("pangram","We promptly judged antique ivory buckles for the next prize")
+    val papangramsTest2 = ("not pangram","We promptly judged antique ivory buckles for the prize")
+    pangrams should s"return ${papangramsTest1._1} when given ${papangramsTest1._2}" in {
+        val expected = papangramsTest1._1
+        val actual = Week2.pangrams(papangramsTest1._2)
+        assert(actual === expected)
+    }
+
+    it should s"return ${papangramsTest2._1} when given ${papangramsTest2._2}" in {
+        val expected = papangramsTest2._1
+        val actual = Week2.pangrams(papangramsTest2._2)
+        assert(actual === expected)
+    }
+
+    val marsExplorationTest1 = (0, "SOSSOSSOS")
+    val marsExplorationTest2 = (2, "SOSTOSTOS")
+    val marsExplorationTest3 = (5, "STBCODSOF")
+
+    marsExploration should s"return ${marsExplorationTest1._1} when given ${marsExplorationTest1._2}" in {
+        val expected = marsExplorationTest1._1
+        val actual = Week2.marsExploration(marsExplorationTest1._2)
+        assert(actual === expected)
+    }
+
+    it should s"return ${marsExplorationTest2._1} when given ${marsExplorationTest2._2}" in {
+        val expected = marsExplorationTest2._1
+        val actual = Week2.marsExploration(marsExplorationTest2._2)
+        assert(actual === expected)
+    }
+
+    it should s"return ${marsExplorationTest3._1} when given ${marsExplorationTest3._2}" in {
+        val expected = marsExplorationTest3._1
+        val actual = Week2.marsExploration(marsExplorationTest3._2)
         assert(actual === expected)
     }
 

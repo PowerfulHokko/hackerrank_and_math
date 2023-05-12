@@ -68,4 +68,17 @@ object Week2 {
         ctValley
     }
 
+    def pangrams(s: String): String = {
+       if(s.replace(" ", "").toUpperCase.distinct.length ==26) "pangram" else "not pangram"
+    }
+
+    //todo: add tests
+    def marsExploration(s: String): Int = {
+        val sl = s.sliding(3, 3).toList
+        sl.count(_(0) != 'S') +
+        sl.count(_(1) != 'O') +
+        sl.count(_(2) != 'S')
+    }
+
+
 }
