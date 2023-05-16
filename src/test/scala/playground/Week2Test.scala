@@ -11,6 +11,7 @@ class Week2Test extends AnyFlatSpec{
     val countingValleys = "countingValleys"
     val pangrams = "pangrams"
     val marsExploration = "marsExploration"
+    val flippingMatrix = "flippingMatrix"
 
     val lonelyintegertest1: (Int, Array[Int]) = (1, Array(5,9,9,5,7,8,8,7,1,3,9,3,7))
     val lonelyintegertest2: (Int, Array[Int]) = (9, Array(5,0,9,5,7,8,8,0,0,3,7,3,7))
@@ -139,4 +140,10 @@ class Week2Test extends AnyFlatSpec{
         assert(actual === expected)
     }
 
+    val flippingMatrixTest1 = (414, Array(Array(112,42,83,119), Array(56,125,56,46), Array(15,78,101,43), Array(62,98,114,108)))
+    flippingMatrix should s"return ${flippingMatrixTest1._1} when given ${flippingMatrixTest1._2.map(_.mkString(",")).mkString("//")}" in {
+        val expected = flippingMatrixTest1._1
+        val actual = Week2.flippingMatrix(flippingMatrixTest1._2)
+        assert(actual === expected)
+    }
 }

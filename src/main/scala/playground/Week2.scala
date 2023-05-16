@@ -79,5 +79,23 @@ object Week2 {
         sl.count(_(2) != 'S')
     }
 
+    def flippingMatrix(matrix: Array[Array[Int]]): Int = {
+        val n = matrix.length
+        val m = matrix(0).length
+
+        // Calculate the sum
+        var sum = 0
+        for (i <- 0 until n / 2) {
+            for (j <- 0 until m / 2) {
+                val maxElement = Math.max(
+                    Math.max(matrix(i)(j), matrix(i)(m - j - 1)),
+                    Math.max(matrix(n - i - 1)(j), matrix(n - i - 1)(m - j - 1))
+                )
+                sum += maxElement
+            }
+        }
+        sum
+    }
+
 
 }
