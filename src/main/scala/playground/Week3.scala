@@ -48,12 +48,68 @@ object Week3 {
     }
 
     def migratoryBirds(arr: Array[Int]): Int = {
-        // Write your code here
-            -1
+        arr.groupBy(identity).filter(t => t._2.length == 2).keys.toList.sorted.head
+        /*
+            Solution in python because scala code would not compile on hackerank
+
+            def migratoryBirds(arr):
+            count = {}
+            max_count = 0
+            result = None
+
+            for bird in arr:
+                count[bird] = count.get(bird, 0) + 1
+                if count[bird] > max_count or (count[bird] == max_count and bird < result):
+                    max_count = count[bird]
+                    result = bird
+
+            return result
+
+        */
     }
 
-    def main(args: Array[String]): Unit = {
-        println(sockMerchant(0, Array(10,20,20,10,10,30,50,10,20)))
+    def maximumPerimeterTriangle(sticks: Array[Int]): Array[Int] = {
+        object IntArrayOrdering extends Ordering[Array[Int]]{
+            override def compare(x: Array[Int], y: Array[Int]): Int = y.sum.compareTo(x.sum)
+        }
+
+        sticks
+            .combinations(3)
+            .map(x=> x.sorted.reverse)
+            .distinct
+            .map(x => x.sorted.reverse)
+            .filter(x => x.head < x(1)+x(2))
+            .toList
+            .sorted(IntArrayOrdering)
+            .headOption.map(_.reverse)
+            .getOrElse(Array(-1))
     }
 
+    def pageCount(n: Int, p: Int): Int = {
+        //1     2,3|     4,5    6
+        val isBeginOrEnd = (i : Int) =>{
+            (i == 1) ||  (n % 2 != 0 && p >= n - 1) || (n % 2 == 0 && p == n)
+        }
+
+        p match{
+            case x if(isBeginOrEnd(x)) => {0}
+            case x if ( n%2 == 0 && (x == n-1)) => 1
+            case _ => {
+                if (p > n / 2) {
+                    (n - p) / 2
+                } else {
+                    p / 2
+                }
+            }
+        }
+     }
+
+    def getTotalX(a: Array[Int], b: Array[Int]): Int = {
+        (a.max to b.min).filter { i =>
+            a.length == a.count(x => i % x == 0)
+        }.count { i =>
+            b.length == b.count(x => x % i == 0)
+        }
+    }
+    
 }
